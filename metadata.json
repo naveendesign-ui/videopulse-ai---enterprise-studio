@@ -1,0 +1,6 @@
+{
+  "name": "VideoPulse AI - Enterprise Studio",
+  "description": "Enterprise AI video analytics platform featuring multimodal processing, Whisper large-v3 STT, OpenCV scene detection, timestamped transcripts, highlight extraction, and sentiment curves.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

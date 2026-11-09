@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VideoPulse AI - Enterprise Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "on-primary-fixed": "#001f26",
+              "surface-container-low": "#141b2b",
+              "on-error-container": "#ffdad6",
+              "tertiary-fixed": "#d8e2ff",
+              "error-container": "#93000a",
+              "on-surface": "#dce2f7",
+              "secondary": "#4fdbc8",
+              "surface-container-highest": "#2e3545",
+              "tertiary-fixed-dim": "#adc6ff",
+              "on-primary-fixed-variant": "#004e5c",
+              "on-primary": "#003640",
+              "on-error": "#690005",
+              "surface-container-high": "#232a3a",
+              "on-tertiary": "#002e6a",
+              "error": "#ffb4ab",
+              "background": "#0c1322",
+              "tertiary-container": "#78a5ff",
+              "on-secondary-fixed-variant": "#005048",
+              "surface": "#0c1322",
+              "on-primary-container": "#00424f",
+              "primary-container": "#06b6d4",
+              "primary": "#4cd7f6",
+              "secondary-fixed": "#71f8e4",
+              "inverse-primary": "#00687a",
+              "surface-container": "#191f2f",
+              "on-surface-variant": "#bcc9cd",
+              "on-background": "#dce2f7",
+              "on-secondary-fixed": "#00201c",
+              "secondary-fixed-dim": "#4fdbc8",
+              "surface-bright": "#323949",
+              "on-tertiary-fixed": "#001a42",
+              "on-secondary-container": "#003f38",
+              "inverse-on-surface": "#293040",
+              "surface-container-lowest": "#070e1d",
+              "primary-fixed-dim": "#4cd7f6",
+              "secondary-container": "#04b4a2",
+              "primary-fixed": "#acedff",
+              "surface-dim": "#0c1322",
+              "on-tertiary-fixed-variant": "#004395",
+              "on-tertiary-container": "#00397f",
+              "outline-variant": "#3d494c",
+              "on-secondary": "#003731",
+              "surface-variant": "#2e3545",
+              "tertiary": "#adc6ff",
+              "inverse-surface": "#dce2f7",
+              "outline": "#869397",
+              "surface-tint": "#4cd7f6"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+            "spacing": {
+              "space-md": "1rem",
+              "gutter": "1.5rem",
+              "margin": "2rem",
+              "space-xl": "2.5rem",
+              "space-sm": "0.5rem",
+              "space-lg": "1.5rem",
+              "space-xs": "0.25rem"
+            },
+            "fontFamily": {
+              "body-lg": ["Inter"],
+              "headline-lg": ["Inter"],
+              "label-sm": ["Inter"],
+              "label-md": ["Inter"],
+              "body-md": ["Inter"],
+              "body-sm": ["Inter"],
+              "headline-xl": ["Inter"],
+              "headline-md": ["Inter"],
+              "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+              "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+              "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+              "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+              "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+              "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+              "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+              "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+              "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+              "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top App Bar -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant/30 flex justify-between items-center w-full px-space-lg h-16 sticky top-0 z-50">
+<div class="flex items-center gap-space-md">
+<span class="text-headline-sm font-headline-sm font-bold text-on-surface dark:text-on-surface flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">pulse_alert</span>
+                VideoPulse AI
+            </span>
+<span class="text-label-md bg-surface-container-high px-space-sm py-space-xs rounded-full border border-outline-variant/30 text-primary">v4.2 Enterprise</span>
+</div>
+<div class="flex items-center gap-space-lg">
+<div class="relative hidden md:block w-72">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-on-surface-variant text-sm">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-lg pl-9 pr-space-md py-1.5 text-body-sm text-on-surface focus:border-primary focus:outline-none transition-colors" placeholder="Search transcripts, entities, models..." type="text"/>
+</div>
+<div class="flex items-center gap-space-sm text-on-surface-variant">
+<span class="text-label-md text-primary font-medium flex items-center gap-1.5 bg-primary-container/10 px-3 py-1 rounded-full border border-primary/20">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    Backend: Connected
+                </span>
+<button aria-label="Notifications" class="p-2 hover:bg-surface-bright rounded-lg transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant/50 flex items-center justify-center font-bold text-xs text-primary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a software engineer with dark hair wearing a minimalist dark navy hoodie against a sleek technological background with faint neon cyan light leaks, high resolution studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm5EsyowxDm1h7KvT3oC2haGBn7ARax_qme2YULyf1wChFQpyvS8kmlpwrrSpJ9ztF7KGVBc_d4ZSz5GUrebI4Qy7E6tla9C5rXm-Z-MwFsq9W8VyDFtexycUJ23_8PW6RYtehCyHEfj9ph_5ER1kjXc2ipJaqFNq9-F1mpQj5GPu-L622C3rjHBCB-3OmJz8cohtpmMFHwrElGhUiP3BFj7JybYmwDvqFIfKwwsc"/>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden h-[calc(100vh-4rem)]">
+<!-- Side Navigation Bar -->
+<nav class="bg-surface-container-low dark:bg-surface-container-low border-r border-outline-variant/30 flex flex-col justify-between h-full p-space-md w-64 shrink-0 select-none">
+<div class="flex flex-col gap-space-sm">
+<!-- Workspace Info -->
+<div class="flex items-center gap-space-sm p-space-sm mb-space-sm bg-surface-container rounded-lg border border-outline-variant/20">
+<div class="w-9 h-9 rounded bg-primary-container/20 border border-primary/30 flex items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">domain</span>
+</div>
+<div class="overflow-hidden">
+<h4 class="text-headline-sm font-headline-sm text-on-surface truncate">Enterprise Studio</h4>
+<p class="text-label-md text-on-surface-variant truncate">AI Video Analytics</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col gap-1 nav-links">
+<button class="flex items-center gap-3 w-full text-left bg-primary-container/20 text-primary font-bold rounded-lg px-space-md py-space-sm transition-all duration-150" onclick="switchTab('Dashboard', this)">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-body-md">Dashboard</span>
+</button>
+<button class="flex items-center gap-3 w-full text-left text-on-surface-variant rounded-lg px-space-md py-space-sm hover:bg-surface-container-high hover:text-on-surface transition-all duration-150" onclick="switchTab('Upload Video', this)">
+<span class="material-symbols-outlined">upload</span>
+<span class="text-body-md">Upload Video</span>
+</button>
+<button class="flex items-center gap-3 w-full text-left text-on-surface-variant rounded-lg px-space-md py-space-sm hover:bg-surface-container-high hover:text-on-surface transition-all duration-150" onclick="switchTab('Video Analysis', this)">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-body-md">Video Analysis</span>
+</button>
+<button class="flex items-center gap-3 w-full text-left text-on-surface-variant rounded-lg px-space-md py-space-sm hover:bg-surface-container-high hover:text-on-surface transition-all duration-150" onclick="switchTab('Transcript', this)">
+<span class="material-symbols-outlined">description</span>
+<span class="text-body-md">Transcript</span>
+</button>
+<button class="flex items-center gap-3 w-full text-left text-on-surface-variant rounded-lg px-space-md py-space-sm hover:bg-surface-container-high hover:text-on-surface transition-all duration-150" onclick="switchTab('AI Summary', this)">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="text-body-md">AI Summary</span>
+</button>
+<button class="flex items-center gap-3 w-full text-left text-on-surface-variant rounded-lg px-space-md py-space-sm hover:bg-surface-container-high hover:text-on-surface transition-all duration-150" onclick="switchTab('Highlights', this)">
+<span class="material-symbols-outlined">movie_filter</span>
+<span class="text-body-md">Highlights</span>
+</button>
+<button class="flex items-center gap-3 w-full text-left text-on-surface-variant rounded-lg px-space-md py-space-sm hover:bg-surface-container-high hover:text-on-surface transition-all duration-150" onclick="switchTab('Analytics', this)">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-body-md">Analytics</span>
+</button>
+<button class="flex items-center gap-3 w-full text-left text-on-surface-variant rounded-lg px-space-md py-space-sm hover:bg-surface-container-high hover:text-on-surface transition-all duration-150" onclick="switchTab('History', this)">
+<span class="material-symbols-outlined">history</span>
+<span class="text-body-md">History</span>
+</button>
+<button class="flex items-center gap-3 w-full text-left text-on-surface-variant rounded-lg px-space-md py-space-sm hover:bg-surface-container-high hover:text-on-surface transition-all duration-150" onclick="switchTab('Settings', this)">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-body-md">Settings</span>
+</button>
+</div>
+</div>
+<!-- Bottom CTA in Sidebar -->
+<div class="pt-space-md border-t border-outline-variant/30">
+<button class="w-full bg-primary text-on-primary font-semibold py-2.5 px-space-md rounded-lg flex items-center justify-center gap-2 hover:bg-primary-fixed-dim transition-all shadow-lg shadow-primary/20" onclick="openModal()">
+<span class="material-symbols-outlined text-sm">add</span>
+                    New Batch
+                </button>
+</div>
+</nav>
+<!-- Main Content Workspace Canvas -->
+<main class="flex-1 overflow-y-auto bg-surface p-space-lg relative flex flex-col gap-space-lg" id="main-canvas">
+<!-- TAB 1: DASHBOARD (Default Active View) -->
+<div class="tab-content flex flex-col gap-space-lg" id="view-Dashboard">
+<!-- Top Banner Welcome -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-lg relative overflow-hidden">
+<div class="absolute right-0 top-0 w-96 h-full bg-gradient-to-l from-primary-container/10 to-transparent pointer-events-none"></div>
+<div class="z-10">
+<span class="text-label-md text-primary font-medium tracking-wide uppercase">Operational Overview</span>
+<h1 class="text-headline-lg font-headline-lg text-on-surface mt-1">Multimodal Processing Engine Active</h1>
+<p class="text-body-md text-on-surface-variant mt-1 max-w-2xl">Real-time FFmpeg audio extraction, Whisper large-v3 STT, OpenCV spatial scene parsing, and Cross-Attention Multimodal fusion running at peak concurrency.</p>
+</div>
+<div class="mt-space-md md:mt-0 z-10 flex gap-space-sm">
+<button class="bg-primary text-on-primary font-semibold px-4 py-2 rounded-lg text-body-md flex items-center gap-2 hover:bg-primary-fixed-dim transition-all" onclick="switchTab('Upload Video', document.querySelector('.nav-links button:nth-child(2)'))">
+<span class="material-symbols-outlined text-sm">upload_file</span>
+                            Process New Video
+                        </button>
+<button class="bg-surface-container-high border border-outline-variant text-on-surface px-4 py-2 rounded-lg text-body-md hover:bg-surface-bright transition-all" onclick="switchTab('Video Analysis', document.querySelector('.nav-links button:nth-child(3))'))">
+                            View Live Stream
+                        </button>
+</div>
+</div>
+<!-- Bento Grid Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-space-lg">
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant text-body-sm font-medium">Processed Hours</span>
+<span class="material-symbols-outlined text-primary p-2 bg-primary-container/10 rounded-lg">schedule</span>
+</div>
+<div class="mt-4">
+<h3 class="text-headline-lg font-headline-lg text-on-surface">1,482 hrs</h3>
+<span class="text-label-sm text-secondary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +14.2% this week
+                            </span>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant text-body-sm font-medium">STT Word Accuracy</span>
+<span class="material-symbols-outlined text-secondary p-2 bg-secondary-container/10 rounded-lg">mic</span>
+</div>
+<div class="mt-4">
+<h3 class="text-headline-lg font-headline-lg text-on-surface">99.4%</h3>
+<span class="text-label-sm text-secondary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">check_circle</span> Whisper v3 Model
+                            </span>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant text-body-sm font-medium">Extracted Highlights</span>
+<span class="material-symbols-outlined text-tertiary p-2 bg-tertiary-container/10 rounded-lg">movie_filter</span>
+</div>
+<div class="mt-4">
+<h3 class="text-headline-lg font-headline-lg text-on-surface">8,640</h3>
+<span class="text-label-sm text-tertiary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">bolt</span> Auto-tagged clips
+                            </span>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-md flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant text-body-sm font-medium">Pipeline Latency</span>
+<span class="material-symbols-outlined text-primary p-2 bg-primary-container/10 rounded-lg">bolt</span>
+</div>
+<div class="mt-4">
+<h3 class="text-headline-lg font-headline-lg text-on-surface">140ms</h3>
+<span class="text-label-sm text-primary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">speed</span> Real-time streaming
+                            </span>
+</div>
+</div>
+</div>
+<!-- Recent Pipelines & Active Queue -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Pipeline Status Tracker -->
+<div class="lg:col-span-2 bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-lg">
+<div class="flex justify-between items-center mb-space-md">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Active Processing Pipelines</h3>
+<span class="text-label-md text-primary bg-primary-container/10 px-3 py-1 rounded-full border border-primary/20">3 Jobs Running</span>
+</div>
+<div class="flex flex-col gap-space-md">
+<div class="bg-surface-container p-space-md rounded-lg border border-outline-variant/20 flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm">smart_display</span>
+</div>
+<div>
+<h4 class="text-body-md font-semibold text-on-surface">Q4_Earnings_Call_Master_4K.mp4</h4>
+<p class="text-label-sm text-on-surface-variant">Duration: 45:12 • Codec: H.264/AAC</p>
+</div>
+</div>
+<span class="text-label-md bg-primary/20 text-primary px-2.5 py-1 rounded">Multimodal Fusion</span>
+</div>
+<!-- Progress Steps -->
+<div class="space-y-2">
+<div class="flex justify-between text-label-sm text-on-surface-variant">
+<span>Pipeline Progress (Step 4 of 4)</span>
+<span class="text-primary font-bold">88%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-secondary to-primary h-full rounded-full w-[88%] transition-all"></div>
+</div>
+<div class="grid grid-cols-4 gap-2 pt-1 text-[11px] text-on-surface-variant">
+<span class="text-primary flex items-center gap-1"><span class="material-symbols-outlined text-xs">check</span> FFmpeg Audio</span>
+<span class="text-primary flex items-center gap-1"><span class="material-symbols-outlined text-xs">check</span> Whisper STT</span>
+<span class="text-primary flex items-center gap-1"><span class="material-symbols-outlined text-xs">check</span> OpenCV Scene</span>
+<span class="text-primary font-bold flex items-center gap-1 animate-pulse"><span class="material-symbols-outlined text-xs">sync</span> Fusion &amp; Index</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-space-md rounded-lg border border-outline-variant/20 flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">movie</span>
+</div>
+<div>
+<h4 class="text-body-md font-semibold text-on-surface">Product_Keynote_Launch_2025.mov</h4>
+<p class="text-label-sm text-on-surface-variant">Duration: 18:30 • Codec: ProRes 422</p>
+</div>
+</div>
+<span class="text-label-md bg-surface-container-highest text-on-surface-variant px-2.5 py-1 rounded">Queued</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Highlights Widget -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-lg flex flex-col">
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-space-md">Top AI Highlights</h3>
+<div class="flex flex-col gap-3 flex-1">
+<div class="group relative rounded-lg overflow-hidden border border-outline-variant/30 bg-surface-container p-3 flex gap-3 items-center hover:border-primary transition-all cursor-pointer" onclick="switchTab('Highlights', document.querySelector('.nav-links button:nth-child(6)'))">
+<div class="w-16 h-12 rounded bg-surface-container-highest shrink-0 relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A cinematic widescreen video still showing a high-tech corporate stage with luminous holographic charts floating in mid-air, sleek dark background, vibrant blue and cyan glowing lighting, sharp professional photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVYBXt4KrZqJEhwiUJcqlAhP6ruC-upHUFo1tPEFafquxHphMaWgrKX6Wo2ew6GsPYG64RCaduvpH0Hcktmr7-QAoToWXN6mZhDBPGAKyPCi0U_ilnMiU2y6Tovn8fqmeMS4ZdT4ec3GGpFtSVDQJkCH064NSCXJFiXSrLwjswt2UiAnh6iplcH8qmK9uzbv6L9B3y8l8b7E-H5wMjEM-Fge8I0OYjTx5t8lfM0NM"/>
+<span class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-sm">play_arrow</span>
+</span>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-body-sm font-semibold text-on-surface truncate">Keynote Financial Review</h5>
+<span class="text-label-sm text-primary">04:12 - 06:45 • 98.2% Score</span>
+</div>
+</div>
+<div class="group relative rounded-lg overflow-hidden border border-outline-variant/30 bg-surface-container p-3 flex gap-3 items-center hover:border-primary transition-all cursor-pointer" onclick="switchTab('Highlights', document.querySelector('.nav-links button:nth-child(6)'))">
+<div class="w-16 h-12 rounded bg-surface-container-highest shrink-0 relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="An energetic presentation slide deck displayed on a massive LED wall with abstract geometric 3D data graphs in glowing cyan and electric blue, dark futuristic studio setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa41K1c3nVyZBGltdF-mkV9Nv5sEjbDLEDoDEg3dXHx7sCYam50LfglD6O7vPJkXtl6gFmsNhkMXl7gOAOA79FXaGebH406ueYqXUAifdxiBa6l2cK-ks-6mzlYr-uRR39CtLQCBfZGEEG2-agWIlqJAiLWMPyVB40EUqZscdS_CwCqkgA3YM2gtOSVbd1WUCAdIAWAB4Vtwxdkb_jl5irj86utK8CEnDQNgRp1gE"/>
+<span class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white text-sm">play_arrow</span>
+</span>
+</div>
+<div class="flex-1 min-w-0">
+<h5 class="text-body-sm font-semibold text-on-surface">New Architecture Demo</h5>
+<span class="text-label-sm text-primary">12:05 - 15:30 • 96.8% Score</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB 2: UPLOAD VIDEO -->
+<div class="tab-content hidden flex flex-col gap-space-lg" id="view-Upload Video">
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-lg">
+<h2 class="text-headline-md font-headline-md text-on-surface mb-2">Upload Video for Multimodal Analysis</h2>
+<p class="text-body-md text-on-surface-variant mb-space-lg">Drag and drop high-res video files (MP4, MOV, MKV, ProRes) or configure batch parameters directly.</p>
+<!-- Dropzone -->
+<div class="border-2 border-dashed border-outline-variant/60 rounded-xl p-12 text-center flex flex-col items-center justify-center gap-4 bg-surface-container/50 hover:border-primary transition-colors cursor-pointer group" onclick="simulateUpload()">
+<div class="w-16 h-16 rounded-full bg-primary-container/20 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">cloud_upload</span>
+</div>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-on-surface">Drop video files here or click to browse</h4>
+<p class="text-body-sm text-on-surface-variant mt-1">Supports H.264, H.265, ProRes, and RAW codecs up to 8K resolution.</p>
+</div>
+<button class="bg-primary text-on-primary font-semibold px-6 py-2.5 rounded-lg text-body-md mt-2 shadow-lg shadow-primary/20">Select Video File</button>
+</div>
+<!-- Pipeline Configuration Options -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mt-space-lg">
+<div class="bg-surface-container p-space-md rounded-lg border border-outline-variant/30">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded bg-surface border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md font-semibold text-on-surface">FFmpeg Audio Extraction</span>
+</label>
+<p class="text-body-sm text-on-surface-variant mt-2">Isolates high-fidelity multi-channel audio tracks for precise STT.</p>
+</div>
+<div class="bg-surface-container p-space-md rounded-lg border border-outline-variant/30">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded bg-surface border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md font-semibold text-on-surface">Whisper STT &amp; Diarization</span>
+</label>
+<p class="text-body-sm text-on-surface-variant mt-2">Automatic speaker identification and timestamp alignment.</p>
+</div>
+<div class="bg-surface-container p-space-md rounded-lg border border-outline-variant/30">
+<label class="flex items-center gap-3 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded bg-surface border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md font-semibold text-on-surface">OpenCV Scene Detection</span>
+</label>
+<p class="text-body-sm text-on-surface-variant mt-2">Keyframe indexing, OCR slide extraction, and visual anomaly tags.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB 3: VIDEO ANALYSIS -->
+<div class="tab-content hidden flex flex-col gap-space-lg" id="view-Video Analysis">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Video Player & Waveform Section -->
+<div class="lg:col-span-2 flex flex-col gap-space-md">
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl overflow-hidden shadow-2xl">
+<!-- Video Mock Screen -->
+<div class="relative aspect-video bg-black flex items-center justify-center group">
+<img class="w-full h-full object-cover" data-alt="A professional video editor workspace showing a dynamic tech presentation on a large screen with crisp lighting, deep navy and cyan color grade, highly detailed rendering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfw8yHI6KBIvZwOyRBLqVBrnAsnwylYOpKptcomC6zAK95dcq3MTolQwvQb6JUecih-xXJQDGmO4-MArQeEM9NWkORRWwiuvO1J1DCUwI6ehqQBWCJWQ5Mb9SlPyZ-gsl_dYMMgMzGkIlE6wZPdkSBe_gZ_vZSTnv3DVC2Dx8mKcRUK0Mw8Fk4NgK1UXs6xfUtzblHg4Y34TCUAex3n_pScYsf8ANKcvGVjoYLNXQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-between p-space-md">
+<div class="flex justify-between items-center">
+<span class="bg-black/60 backdrop-blur text-primary text-label-md px-3 py-1 rounded border border-primary/30">04:12 / 45:12</span>
+<span class="bg-secondary/20 text-secondary text-label-md px-3 py-1 rounded border border-secondary/30">HD 1080p60</span>
+</div>
+<div class="flex items-center justify-center gap-6">
+<button class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur flex items-center justify-center text-white transition-all"><span class="material-symbols-outlined">replay_10</span></button>
+<button class="w-14 h-14 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg hover:scale-105 transition-all" id="play-btn" onclick="togglePlay()"><span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span></button>
+<button class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur flex items-center justify-center text-white transition-all"><span class="material-symbols-outlined">forward_10</span></button>
+</div>
+</div>
+</div>
+<!-- Interactive Waveform Scrubber -->
+<div class="p-space-md bg-surface-container flex flex-col gap-2">
+<div class="flex justify-between text-label-sm text-on-surface-variant">
+<span>Audio Waveform &amp; Highlight Density</span>
+<span class="text-primary">Confidence Peak: 98%</span>
+</div>
+<div class="h-12 w-full bg-surface-container-lowest rounded relative overflow-hidden flex items-center px-1 gap-0.5 cursor-pointer">
+<!-- Dynamic simulated waveform bars -->
+<div class="w-1 bg-primary/40 h-4 rounded-full"></div>
+<div class="w-1 bg-primary/70 h-8 rounded-full"></div>
+<div class="w-1 bg-primary h-10 rounded-full"></div>
+<div class="w-1 bg-secondary h-6 rounded-full"></div>
+<div class="w-1 bg-primary/50 h-3 rounded-full"></div>
+<div class="w-1 bg-primary/80 h-9 rounded-full"></div>
+<div class="w-1 bg-primary h-12 rounded-full shadow-[0_0_10px_#4cd7f6]"></div>
+<div class="w-1 bg-primary h-10 rounded-full"></div>
+<div class="w-1 bg-secondary h-7 rounded-full"></div>
+<div class="w-1 bg-primary/60 h-4 rounded-full"></div>
+<div class="w-1 bg-primary h-11 rounded-full"></div>
+<div class="w-1 bg-primary/40 h-5 rounded-full"></div>
+<div class="w-1 bg-primary/90 h-10 rounded-full"></div>
+<!-- Scrubber head -->
+<div class="absolute left-[35%] top-0 bottom-0 w-1 bg-white shadow-[0_0_12px_#ffffff] z-10"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Scene Detection Sidebar -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-md flex flex-col">
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-space-md">Detected Scenes &amp; OCR</h3>
+<div class="flex flex-col gap-3 overflow-y-auto max-h-[500px] pr-1">
+<div class="p-3 bg-surface-container rounded-lg border border-primary/30 flex gap-3 items-center">
+<span class="text-primary font-bold text-label-md bg-primary-container/20 px-2 py-1 rounded">00:00</span>
+<div class="flex-1">
+<h5 class="text-body-sm font-semibold text-on-surface">Introduction &amp; Agenda</h5>
+<p class="text-label-sm text-on-surface-variant">OCR: "Q4 Roadmap &amp; Financials"</p>
+</div>
+</div>
+<div class="p-3 bg-surface-container rounded-lg border border-outline-variant/20 flex gap-3 items-center hover:border-primary transition-colors cursor-pointer">
+<span class="text-on-surface-variant font-bold text-label-md bg-surface-container-highest px-2 py-1 rounded">04:15</span>
+<div class="flex-1">
+<h5 class="text-body-sm font-semibold text-on-surface">Revenue Growth Analysis</h5>
+<p class="text-label-sm text-on-surface-variant">OCR: "ARR Surpasses $50M"</p>
+</div>
+</div>
+<div class="p-3 bg-surface-container rounded-lg border border-outline-variant/20 flex gap-3 items-center hover:border-primary transition-colors cursor-pointer">
+<span class="text-on-surface-variant font-bold text-label-md bg-surface-container-highest px-2 py-1 rounded">12:30</span>
+<div class="flex-1">
+<h5 class="text-body-sm font-semibold text-on-surface">Architecture Demo</h5>
+<p class="text-label-sm text-on-surface-variant">OCR: "Multimodal Vector Index"</p>
+</div>
+</div>
+<div class="p-3 bg-surface-container rounded-lg border border-outline-variant/20 flex gap-3 items-center hover:border-primary transition-colors cursor-pointer">
+<span class="text-on-surface-variant font-bold text-label-md bg-surface-container-highest px-2 py-1 rounded">28:45</span>
+<div class="flex-1">
+<h5 class="text-body-sm font-semibold text-on-surface">Q&amp;A Session</h5>
+<p class="text-label-sm text-on-surface-variant">OCR: "Open Floor Discussion"</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB 4: TRANSCRIPT -->
+<div class="tab-content hidden flex flex-col gap-space-lg" id="view-Transcript">
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-lg flex flex-col gap-space-md">
+<div class="flex justify-between items-center">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Timestamped Transcript Explorer</h2>
+<p class="text-body-md text-on-surface-variant">Click any line to jump directly to playback position.</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container-high border border-outline-variant text-on-surface px-3 py-1.5 rounded-lg text-body-sm flex items-center gap-2"><span class="material-symbols-outlined text-sm">download</span> Export SRT</button>
+<button class="bg-primary text-on-primary px-3 py-1.5 rounded-lg text-body-sm font-semibold flex items-center gap-2"><span class="material-symbols-outlined text-sm">search</span> Search Transcript</button>
+</div>
+</div>
+<!-- Transcript Stream -->
+<div class="flex flex-col gap-3 bg-surface-container p-space-md rounded-xl border border-outline-variant/20 max-h-[600px] overflow-y-auto">
+<div class="flex gap-4 p-3 rounded-lg bg-primary-container/10 border border-primary/20">
+<span class="text-primary font-mono font-bold text-body-sm shrink-0">00:00:14</span>
+<div>
+<span class="text-label-md font-bold text-secondary">Speaker 1 (Dr. Elena Vance)</span>
+<p class="text-body-md text-on-surface mt-1">Welcome everyone to the Q4 enterprise earnings call. Today we are thrilled to announce our breakthrough in multimodal video indexing speeds, dropping inference latency down to 140 milliseconds.</p>
+</div>
+</div>
+<div class="flex gap-4 p-3 rounded-lg hover:bg-surface-bright transition-colors cursor-pointer">
+<span class="text-on-surface-variant font-mono text-body-sm shrink-0">00:01:05</span>
+<div>
+<span class="text-label-md font-bold text-tertiary">Speaker 2 (Marcus Chen)</span>
+<p class="text-body-md text-on-surface mt-1">Thanks Elena. Looking at the infrastructure metrics, our transition to Whisper large-v3 combined with custom OpenCV scene parsers has boosted word recognition accuracy to 99.4 percent globally.</p>
+</div>
+</div>
+<div class="flex gap-4 p-3 rounded-lg hover:bg-surface-bright transition-colors cursor-pointer">
+<span class="text-on-surface-variant font-mono text-body-sm shrink-0">00:02:40</span>
+<div>
+<span class="text-label-md font-bold text-secondary">Speaker 1 (Dr. Elena Vance)</span>
+<p class="text-body-md text-on-surface mt-1">That scale is unprecedented. Our enterprise clients are now processing over ten thousand hours of high-definition security and webinar footage daily without bottlenecks.</p>
+</div>
+</div>
+<div class="flex gap-4 p-3 rounded-lg hover:bg-surface-bright transition-colors cursor-pointer">
+<span class="text-on-surface-variant font-mono text-body-sm shrink-0">00:04:12</span>
+<div>
+<span class="text-label-md font-bold text-tertiary">Speaker 3 (Sarah Jenkins)</span>
+<p class="text-body-md text-on-surface mt-1">Let's dive directly into the financial breakout for the quarter, highlighting our ARR surge past fifty million dollars.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB 5: AI SUMMARY -->
+<div class="tab-content hidden flex flex-col gap-space-lg" id="view-AI Summary">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<div class="lg:col-span-2 bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-lg flex flex-col gap-space-md">
+<h2 class="text-headline-md font-headline-md text-on-surface">Executive AI Summary</h2>
+<div class="bg-surface-container p-space-md rounded-xl border border-outline-variant/20 flex flex-col gap-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-body-md font-semibold">Key Takeaways &amp; Synthesized Insights</span>
+</div>
+<p class="text-body-lg text-on-surface leading-relaxed">
+                                The Q4 earnings session highlighted record-breaking enterprise growth, driven by proprietary multimodal AI video processing pipelines. Core achievements include lowering latency to 140ms, achieving 99.4% STT accuracy with Whisper v3, and expanding active processing capacity past 1,400 hours.
+                            </p>
+<div class="border-t border-outline-variant/30 pt-4 flex flex-col gap-2">
+<h4 class="text-headline-sm font-headline-sm text-on-surface">Key Action Items</h4>
+<ul class="list-disc list-inside text-body-md text-on-surface-variant space-y-1">
+<li>Deploy cluster auto-scaling for upcoming Q1 enterprise batch uploads.</li>
+<li>Finalize OpenCV 6.0 scene parsing integration for multi-camera streams.</li>
+<li>Schedule technical deep-dive webinar for European enterprise partners.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Export Card -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-lg flex flex-col justify-between">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-2">Export Summary</h3>
+<p class="text-body-sm text-on-surface-variant mb-space-md">Download executive summaries in various professional formats.</p>
+<div class="flex flex-col gap-3">
+<button class="w-full bg-surface-container-high border border-outline-variant text-on-surface py-2.5 px-space-md rounded-lg flex items-center justify-between hover:bg-surface-bright transition-all">
+<span class="flex items-center gap-2 font-medium"><span class="material-symbols-outlined text-primary">picture_as_pdf</span> PDF Executive Report</span>
+<span class="material-symbols-outlined text-sm">download</span>
+</button>
+<button class="w-full bg-surface-container-high border border-outline-variant text-on-surface py-2.5 px-space-md rounded-lg flex items-center justify-between hover:bg-surface-bright transition-all">
+<span class="flex items-center gap-2 font-medium"><span class="material-symbols-outlined text-secondary">description</span> Markdown Brief</span>
+<span class="material-symbols-outlined text-sm">download</span>
+</button>
+<button class="w-full bg-surface-container-high border border-outline-variant text-on-surface py-2.5 px-space-md rounded-lg flex items-center justify-between hover:bg-surface-bright transition-all">
+<span class="flex items-center gap-2 font-medium"><span class="material-symbols-outlined text-tertiary">code</span> JSON Structured Data</span>
+<span class="material-symbols-outlined text-sm">download</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-semibold py-2.5 rounded-lg mt-space-lg shadow-lg shadow-primary/20" onclick="alert('Summary successfully dispatched to Slack enterprise channel!')">Send to Slack Channel</button>
+</div>
+</div>
+</div>
+<!-- TAB 6: HIGHLIGHTS -->
+<div class="tab-content hidden flex flex-col gap-space-lg" id="view-Highlights">
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-lg">
+<div class="flex justify-between items-center mb-space-lg">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Auto-Generated Highlights Gallery</h2>
+<p class="text-body-md text-on-surface-variant">AI-curated viral moments and key technical segments.</p>
+</div>
+<button class="bg-primary text-on-primary font-semibold px-4 py-2 rounded-lg text-body-md flex items-center gap-2">Export All Clips (ZIP)</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<div class="bg-surface-container border border-outline-variant/30 rounded-xl overflow-hidden group">
+<div class="relative aspect-video bg-black overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A striking widescreen cinematic shot of a tech CEO presenting explosive revenue growth charts on stage, illuminated by radiant cyan neon studio lighting, highly detailed professional photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcZ2XjiQ8auIyQXkThI7Lwu4r6QvWA5gkURmnRhQG-YAf5ZylqEjHr3uS1BkCThX6DqghVQ3Pqwf75eZzXLb84cvFytji0Gmif2ZOyqT9MwdVtn57LYhO3mSy-CI-fiZCr15hhBqRR5YsNvFOxuFWXdu5guDIefqArBpU_pO5FcdO3VKmtHAX2PcPzDsFpHV35LMx_aQWUC3l47D_c6UcVjr8wD-uHy0NOJmFraA8"/>
+<span class="absolute bottom-2 right-2 bg-black/70 text-primary text-label-sm px-2 py-0.5 rounded font-mono">02:35</span>
+</div>
+<div class="p-space-md">
+<h4 class="text-body-md font-semibold text-on-surface">ARR Surpasses Milestone</h4>
+<p class="text-body-sm text-on-surface-variant mt-1">Confidence Score: 99.1% • Tag: Finance</p>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 bg-surface-container-high text-on-surface text-label-md py-1.5 rounded border border-outline-variant hover:bg-surface-bright">Preview</button>
+<button class="flex-1 bg-primary text-on-primary text-label-md py-1.5 rounded font-semibold">Export Clip</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant/30 rounded-xl overflow-hidden group">
+<div class="relative aspect-video bg-black overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A high-tech digital workspace showcasing 3D neural network graphs and real-time video stream analytics in deep navy and vibrant cyan tones, professional corporate environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAea8Ja3ySrlLdW7dsXeJeSUX2ZU2bpQ5JUFh4J-aEWVXa_sYn_Lrnn2tTVrGN9HhfUPAecfHcOvYvRvJ93R__5yrNga4UphMajiKxO66g_7dma2ueHEzEaUre6qHLmHl4Xw_UxJ1XsY6H_ca0HDebPmuxgiLnLnIi2Hfy4bbFM1IBmB-dp1VFUZTLzOhbejZSFa62ApPXGlOaOOdsEJ8-4rI4Gh9UsSlAYCBhmKPo"/>
+<span class="absolute bottom-2 right-2 bg-black/70 text-primary text-label-sm px-2 py-0.5 rounded font-mono">05:12</span>
+</div>
+<div class="p-space-md">
+<h4 class="text-body-md font-semibold text-on-surface">Multimodal Architecture</h4>
+<p class="text-body-sm text-on-surface-variant mt-1">Confidence Score: 98.4% • Tag: Engineering</p>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 bg-surface-container-high text-on-surface text-label-md py-1.5 rounded border border-outline-variant hover:bg-surface-bright">Preview</button>
+<button class="flex-1 bg-primary text-on-primary text-label-md py-1.5 rounded font-semibold">Export Clip</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant/30 rounded-xl overflow-hidden group">
+<div class="relative aspect-video bg-black overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A modern executive Q&amp;A panel session on a sleek futuristic stage with soft ambient blue lighting and glowing enterprise displays, high resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7r7qWGOg-7H8ARYmDvjCuq_g0bJAJKsq_-A8FV8bgkd0UC2yhMEc_ExMz06guLqGM0l-1rWZrCECb4HY9-HgSw1HMLvz9FGBYUOPq3Y8h-L4AV3_6RgSZWHhfJEIQ7i3epo9P9pUO89cJ6dhMC637QjiFF63bnhVfgCa83sdpfp0hzG8JIZD18ER39zWfS3Jw3hbd4XTo3sxHC_sXNtF4Y_2L2p8Ic08sGaLWJ4Y"/>
+<span class="absolute bottom-2 right-2 bg-black/70 text-primary text-label-sm px-2 py-0.5 rounded font-mono">14:20</span>
+</div>
+<div class="p-space-md">
+<h4 class="text-body-md font-semibold text-on-surface">Executive Q&amp;A Highlights</h4>
+<p class="text-body-sm text-on-surface-variant mt-1">Confidence Score: 97.8% • Tag: Strategy</p>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 bg-surface-container-high text-on-surface text-label-md py-1.5 rounded border border-outline-variant hover:bg-surface-bright">Preview</button>
+<button class="flex-1 bg-primary text-on-primary text-label-md py-1.5 rounded font-semibold">Export Clip</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB 7: ANALYTICS -->
+<div class="tab-content hidden flex flex-col gap-space-lg" id="view-Analytics">
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-lg flex flex-col gap-space-lg">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Engagement &amp; Sentiment Analytics</h2>
+<p class="text-body-md text-on-surface-variant">Real-time audience sentiment tracking across processed video sessions.</p>
+</div>
+<!-- Chart Simulation Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<div class="bg-surface-container p-space-md rounded-xl border border-outline-variant/20 flex flex-col gap-4">
+<h4 class="text-headline-sm font-headline-sm text-on-surface">Viewer Engagement Curve</h4>
+<div class="h-64 flex items-end gap-2 pt-6 px-2 bg-surface-container-lowest rounded-lg relative">
+<!-- Simulated Bar Chart -->
+<div class="flex-1 bg-primary/40 hover:bg-primary rounded-t h-[40%] transition-all"></div>
+<div class="flex-1 bg-primary/60 hover:bg-primary rounded-t h-[65%] transition-all"></div>
+<div class="flex-1 bg-primary hover:bg-primary rounded-t h-[90%] transition-all shadow-[0_0_15px_#4cd7f6]"></div>
+<div class="flex-1 bg-secondary/80 hover:bg-secondary rounded-t h-[75%] transition-all"></div>
+<div class="flex-1 bg-primary/50 hover:bg-primary rounded-t h-[50%] transition-all"></div>
+<div class="flex-1 bg-primary/80 hover:bg-primary rounded-t h-[85%] transition-all"></div>
+<div class="flex-1 bg-primary hover:bg-primary rounded-t h-[95%] transition-all"></div>
+</div>
+</div>
+<div class="bg-surface-container p-space-md rounded-xl border border-outline-variant/20 flex flex-col gap-4">
+<h4 class="text-headline-sm font-headline-sm text-on-surface">Sentiment Distribution</h4>
+<div class="h-64 flex flex-col justify-center gap-4 px-4 bg-surface-container-lowest rounded-lg">
+<div>
+<div class="flex justify-between text-body-sm mb-1 text-on-surface">
+<span>Positive / Enthusiastic</span>
+<span class="text-secondary font-bold">78%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full w-[78%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm mb-1 text-on-surface">
+<span>Neutral / Informational</span>
+<span class="text-primary font-bold">18%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[18%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm mb-1 text-on-surface">
+<span>Critical / Inquiry</span>
+<span class="text-tertiary font-bold">4%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full rounded-full w-[4%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB 8: HISTORY -->
+<div class="tab-content hidden flex flex-col gap-space-lg" id="view-History">
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-lg">
+<h2 class="text-headline-md font-headline-md text-on-surface mb-2">Processing History &amp; Audit Logs</h2>
+<p class="text-body-md text-on-surface-variant mb-space-lg">Complete record of all ingested video pipelines and AI model executions.</p>
+<div class="flex flex-col gap-3">
+<div class="bg-surface-container p-4 rounded-lg border border-outline-variant/20 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary p-2 bg-primary-container/20 rounded-lg">done_all</span>
+<div>
+<h4 class="text-body-md font-semibold text-on-surface">Q4_Earnings_Call_Master_4K.mp4</h4>
+<p class="text-label-sm text-on-surface-variant">Completed Today at 14:20 • Duration: 45:12 • Whisper v3 + OpenCV</p>
+</div>
+</div>
+<span class="text-label-md bg-secondary/20 text-secondary px-3 py-1 rounded border border-secondary/30">Success</span>
+</div>
+<div class="bg-surface-container p-4 rounded-lg border border-outline-variant/20 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary p-2 bg-primary-container/20 rounded-lg">done_all</span>
+<div>
+<h4 class="text-body-md font-semibold text-on-surface">Product_Keynote_Launch_2025.mov</h4>
+<p class="text-label-sm text-on-surface-variant">Completed Yesterday at 09:15 • Duration: 18:30 • Whisper v3</p>
+</div>
+</div>
+<span class="text-label-md bg-secondary/20 text-secondary px-3 py-1 rounded border border-secondary/30">Success</span>
+</div>
+<div class="bg-surface-container p-4 rounded-lg border border-outline-variant/20 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-tertiary p-2 bg-tertiary-container/20 rounded-lg">history</span>
+<div>
+<h4 class="text-body-md font-semibold text-on-surface">Engineering_Sync_Weekly_102.mkv</h4>
+<p class="text-label-sm text-on-surface-variant">Completed 3 days ago • Duration: 62:00 • Multimodal Fusion</p>
+</div>
+</div>
+<span class="text-label-md bg-secondary/20 text-secondary px-3 py-1 rounded border border-secondary/30">Success</span>
+</div>
+</div>
+</div>
+</div>
+<!-- TAB 9: SETTINGS -->
+<div class="tab-content hidden flex flex-col gap-space-lg" id="view-Settings">
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-space-lg max-w-3xl">
+<h2 class="text-headline-md font-headline-md text-on-surface mb-2">Workspace Settings</h2>
+<p class="text-body-md text-on-surface-variant mb-space-lg">Configure AI model weights, API keys, and enterprise integrations.</p>
+<div class="flex flex-col gap-space-lg">
+<div class="flex flex-col gap-2">
+<label class="text-body-md font-semibold text-on-surface">OpenAI / Whisper API Key</label>
+<input class="bg-surface-container border border-outline-variant/40 rounded-lg p-2.5 text-body-md text-on-surface focus:border-primary focus:outline-none" type="password" value="sk-proj-9832479823749823749283"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-body-md font-semibold text-on-surface">Default Transcription Model</label>
+<select class="bg-surface-container border border-outline-variant/40 rounded-lg p-2.5 text-body-md text-on-surface focus:border-primary focus:outline-none">
+<option>OpenAI Whisper large-v3 (Recommended)</option>
+<option>Whisper medium.en</option>
+<option>Custom Fine-Tuned Enterprise Model v2</option>
+</select>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/30">
+<div>
+<h4 class="text-body-md font-semibold text-on-surface">GPU Acceleration (CUDA / TensorRT)</h4>
+<p class="text-body-sm text-on-surface-variant">Utilize NVIDIA A100 clusters for real-time video parsing.</p>
+</div>
+<input checked="" class="w-5 h-5 rounded bg-surface border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</div>
+<div class="pt-4">
+<button class="bg-primary text-on-primary font-semibold px-6 py-2.5 rounded-lg shadow-lg shadow-primary/20" onclick="alert('Settings saved successfully!')">Save Changes</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Modal Dialog for New Batch -->
+<div class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center hidden" id="new-batch-modal">
+<div class="bg-surface-container-low border border-outline-variant/40 rounded-xl p-space-lg w-full max-w-lg shadow-2xl flex flex-col gap-space-md">
+<div class="flex justify-between items-center">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Create New Video Batch</h3>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="closeModal()"><span class="material-symbols-outlined">close</span></button>
+</div>
+<p class="text-body-md text-on-surface-variant">Queue multiple video files for simultaneous AI summarization and scene extraction.</p>
+<div class="flex flex-col gap-3">
+<label class="text-body-sm font-semibold text-on-surface">Batch Name</label>
+<input class="bg-surface-container border border-outline-variant/40 rounded-lg p-2.5 text-body-md text-on-surface focus:border-primary focus:outline-none" placeholder="e.g. Q1 Product Launches" type="text"/>
+<label class="text-body-sm font-semibold text-on-surface mt-2">Select Pipeline Template</label>
+<select class="bg-surface-container border border-outline-variant/40 rounded-lg p-2.5 text-body-md text-on-surface focus:border-primary focus:outline-none">
+<option>Full Multimodal Suite (FFmpeg + Whisper + OpenCV)</option>
+<option>Audio Transcription Only</option>
+<option>Highlight Extraction &amp; OCR Only</option>
+</select>
+</div>
+<div class="flex justify-end gap-3 mt-4">
+<button class="bg-surface-container-high text-on-surface px-4 py-2 rounded-lg text-body-md hover:bg-surface-bright" onclick="closeModal()">Cancel</button>
+<button class="bg-primary text-on-primary font-semibold px-5 py-2 rounded-lg text-body-md shadow-lg shadow-primary/20" onclick="closeModal(); alert('Batch created successfully!');">Start Batch</button>
+</div>
+</div>
+</div>
+<!-- Script for Tab Switching & Interactivity -->
+<script>
+        function switchTab(tabName, btnElement) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            // Show target tab
+            const target = document.getElementById('view-' + tabName);
+            if (target) {
+                target.classList.remove('hidden');
+            }
+            // Update active states on sidebar buttons if triggered from sidebar
+            if (btnElement) {
+                document.querySelectorAll('.nav-links button').forEach(btn => {
+                    btn.className = "flex items-center gap-3 w-full text-left text-on-surface-variant rounded-lg px-space-md py-space-sm hover:bg-surface-container-high hover:text-on-surface transition-all duration-150";
+                });
+                btnElement.className = "flex items-center gap-3 w-full text-left bg-primary-container/20 text-primary font-bold rounded-lg px-space-md py-space-sm transition-all duration-150";
+            } else {
+                // If triggered programmatically, find matching button
+                document.querySelectorAll('.nav-links button').forEach(btn => {
+                    if (btn.textContent.trim().includes(tabName)) {
+                        btn.className = "flex items-center gap-3 w-full text-left bg-primary-container/20 text-primary font-bold rounded-lg px-space-md py-space-sm transition-all duration-150";
+                    } else {
+                        btn.className = "flex items-center gap-3 w-full text-left text-on-surface-variant rounded-lg px-space-md py-space-sm hover:bg-surface-container-high hover:text-on-surface transition-all duration-150";
+                    }
+                });
+            }
+            // Scroll canvas to top
+            document.getElementById('main-canvas').scrollTop = 0;
+        }
+
+        function openModal() {
+            document.getElementById('new-batch-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('new-batch-modal').classList.add('hidden');
+        }
+
+        function simulateUpload() {
+            alert('Simulating file upload and pipeline initialization...');
+            switchTab('Dashboard', document.querySelector('.nav-links button:nth-child(1)'));
+        }
+
+        let isPlaying = false;
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            const btn = document.getElementById('play-btn');
+            if (isPlaying) {
+                btn.innerHTML = '<span class="material-symbols-outlined text-2xl" style="font-variation-settings: \'FILL\' 1;">pause</span>';
+            } else {
+                btn.innerHTML = '<span class="material-symbols-outlined text-2xl" style="font-variation-settings: \'FILL\' 1;">play_arrow</span>';
+            }
+        }
+    </script>
+</body></html>
